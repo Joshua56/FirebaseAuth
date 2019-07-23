@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/log"
+        android:padding="30dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="Community leader"
+        android:textSize="22sp"
+        android:textColor="#fff"
+        android:id="@+id/community_leader"
+        android:layout_marginTop="40dp"
+        android:onClick="community"
+        android:background="@drawable/button_rounded"
+        android:layout_height="60dp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/login"
+        android:padding="30dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="Health Worker"
+        android:textSize="22sp"
+        android:textColor="#fff"
+        android:id="@+id/community_worker"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button_rounded"
+        android:layout_height="60dp" />
+
+
+</LinearLayout>

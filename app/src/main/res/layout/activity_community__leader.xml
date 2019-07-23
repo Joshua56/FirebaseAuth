@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".Community_Leader">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/cough"
+        android:padding="25dp"/>
+
+    <Button
+        android:id="@+id/sick"
+        android:layout_width="134dp"
+        android:layout_height="29dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="130dp"
+        android:background="@drawable/button_rounded"
+        android:onClick="cough"
+        android:text="Cough"
+        android:textColor="#fff"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/fever"
+        android:padding="25dp"/>
+
+    <Button
+        android:id="@+id/sick_one"
+        android:layout_width="142dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="130dp"
+        android:background="@drawable/button_rounded"
+        android:onClick="fever"
+        android:text="Fever"
+        android:textColor="#fff"
+        android:textSize="15sp" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:src="@drawable/diarrhea"
+        android:padding="25dp"/>
+
+    <Button
+        android:id="@+id/community_leader"
+        android:layout_width="146dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="130dp"
+        android:background="@drawable/button_rounded"
+        android:onClick="diarrhoea"
+        android:text="Diarrhea"
+        android:textColor="#fff"
+        android:textSize="15sp" />
+
+
+</LinearLayout>

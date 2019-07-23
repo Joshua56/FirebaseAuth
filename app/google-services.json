@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "788129516852",
+    "firebase_url": "https://myhealthcare-236f4.firebaseio.com",
+    "project_id": "myhealthcare-236f4",
+    "storage_bucket": "myhealthcare-236f4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788129516852:android:55305ef9a08c64fb",
+        "android_client_info": {
+          "package_name": "www.joshmyapps.com.healthcare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "788129516852-d715mupth92gr351rj0f2658uja9sktp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4LG1cxxXDC0gel4Xoj9We6lObb-1025w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "788129516852-d715mupth92gr351rj0f2658uja9sktp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
