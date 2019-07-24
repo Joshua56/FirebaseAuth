@@ -32,14 +32,16 @@
             android:minHeight="20dp"
             android:src="@drawable/ic_decrease" />
 
-        <EditText
-            android:id="@+id/days_edit_text"
+        <TextView
+            android:id="@+id/days_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Days"
-            android:inputType="number"
             android:minWidth="64dp"
-            android:textAlignment="center" />
+            android:minHeight="54dp"
+            android:padding="8dp"
+            android:text="@string/_0"
+            android:textAlignment="center"
+            android:textSize="20sp" />
 
         <ImageButton
             android:id="@+id/inc_button"
@@ -68,24 +70,25 @@
         android:layout_gravity="center">
 
         <RadioButton
+            android:id="@+id/yes_radio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/yes" />
 
         <RadioButton
+            android:id="@+id/no_radio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:checked="true"
             android:text="@string/no" />
     </RadioGroup>
 
     <Button
+        android:id="@+id/submit_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:backgroundTint="?colorAccent"
         android:minWidth="100dp"
-        android:onClick="submitResponse"
         android:text="@string/submit"
         android:textColor="#ffffff" />
 </LinearLayout>
