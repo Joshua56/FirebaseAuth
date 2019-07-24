@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation">
+
+    <item
+        android:id="@+id/nav_report_case"
+        android:icon="@drawable/ic_report"
+        app:iconTint="@color/colorAccent"
+        android:title="@string/report_case" />
+
+    <item
+        android:id="@+id/nav_defaulter_tracking"
+        android:icon="@drawable/ic_track"
+        app:iconTint="@color/colorAccent"
+        android:title="@string/defaulter_tracking" />
+
+    <item
+        android:id="@+id/nav_chat_room"
+        android:icon="@drawable/ic_chat_bubble"
+        app:iconTint="@color/colorAccent"
+        android:title="@string/chat_room" />
+
+</menu>

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">HealthCare</string>
+    <string name="report_case">Report Case</string>
+    <string name="defaulter_tracking">Defaulter Tracking</string>
+    <string name="chat_room">Chat Room</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>
