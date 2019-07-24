@@ -11,13 +11,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Medication"></activity>
+        <activity
+            android:name=".HealthWorkerActivity"
+            android:label="Health Worker"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".Medication" />
         <activity android:name=".Community_Leader" />
         <activity android:name=".SignUp_Form" />
         <activity
             android:name=".MainActivity"
             android:label="Community"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".LogIn_Form">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
