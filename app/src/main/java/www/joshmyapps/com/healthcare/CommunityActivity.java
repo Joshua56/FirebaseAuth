@@ -6,7 +6,7 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Community_Leader extends AppCompatActivity {
+public class CommunityActivity extends AppCompatActivity {
 
     private Intent diarrhoeaIntent;
 
@@ -16,7 +16,7 @@ public class Community_Leader extends AppCompatActivity {
         setContentView(R.layout.activity_community__leader);
         if (getSupportActionBar() != null)
             getSupportActionBar().setTitle("Diseases");
-        diarrhoeaIntent = new Intent(Community_Leader.this, Medication.class);
+        diarrhoeaIntent = new Intent(CommunityActivity.this, MedicationActivity.class);
     }
 
     public void diarrhoea(View view) {

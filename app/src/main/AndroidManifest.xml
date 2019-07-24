@@ -11,14 +11,34 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Medication"></activity>
-        <activity android:name=".Community_Leader" />
-        <activity android:name=".SignUp_Form" />
+        <activity
+            android:name=".ChatRoomActivity"
+            android:label="Chat Room"
+            android:parentActivityName=".HealthWorkerActivity" />
+        <activity
+            android:name=".DefaulterActivity"
+            android:label="Defaulter Tracking"
+            android:parentActivityName=".HealthWorkerActivity" />
+        <activity
+            android:name=".ReportActivity"
+            android:label="Report"
+            android:parentActivityName=".HealthWorkerActivity" />
+        <activity
+            android:name=".HealthWorkerActivity"
+            android:label="Health Worker"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MedicationActivity"
+            android:label="Medication" />
+        <activity
+            android:name=".CommunityActivity"
+            android:label="Community" />
+        <activity android:name=".SignupActivity" />
         <activity
             android:name=".MainActivity"
             android:label="Community"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".LogIn_Form">
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

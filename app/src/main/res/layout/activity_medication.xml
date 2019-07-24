@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".MedicationActivity">
 
-    tools:context=".Medication">
-
-    <TextView
-        android:id="@+id/count_days_text_view"
+    <fragment
+        android:name="www.joshmyapps.com.healthcare.DiseaseFragment"
+        android:id="@+id/disease_fragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent" />
 
-</ScrollView>
+</LinearLayout>
