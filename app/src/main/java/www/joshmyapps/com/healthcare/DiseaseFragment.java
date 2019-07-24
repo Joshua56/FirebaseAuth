@@ -32,7 +32,7 @@ public class DiseaseFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        String statement = String.format("%s for how many days?", Medication.disease);
+        String statement = String.format("%s for how many days?", MedicationActivity.disease);
         mTextview.setText(statement);
     }
 

@@ -1,8 +1,8 @@
 package www.joshmyapps.com.healthcare;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -53,11 +53,11 @@ public class HealthWorkerActivity extends AppCompatActivity implements Navigatio
         int id = menuItem.getItemId();
 
         if (id == R.id.nav_report_case)
-            Toast.makeText(this, "Report Case", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, ReportActivity.class));
         else if (id == R.id.nav_defaulter_tracking)
-            Toast.makeText(this, "Defaulter Tracking", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, DefaulterActivity.class));
         else if (id == R.id.nav_chat_room)
-            Toast.makeText(this, "Chat Room", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, ChatRoomActivity.class));
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

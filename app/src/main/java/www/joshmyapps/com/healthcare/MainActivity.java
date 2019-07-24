@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void community(View view) {
-        startActivity(new Intent(getApplicationContext(), Community_Leader.class));
+        startActivity(new Intent(getApplicationContext(), CommunityActivity.class));
     }
 
     public void viewHealthWorker(View view) {

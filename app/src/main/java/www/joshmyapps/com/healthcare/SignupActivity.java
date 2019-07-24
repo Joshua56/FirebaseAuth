@@ -17,7 +17,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class SignUp_Form extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity {
 
     Button mButton;
     ProgressBar progressBar;
@@ -50,22 +50,22 @@ public class SignUp_Form extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(email)) {
 
-                    Toast.makeText(SignUp_Form.this, "Please enter your email", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, "Please enter your email", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(password)) {
 
-                    Toast.makeText(SignUp_Form.this, "Please enter your password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, "Please enter your password", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(confirmPassword)) {
 
-                    Toast.makeText(SignUp_Form.this, "Please confirm your password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, "Please confirm your password", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (password.length() > 6) {
 
-                    Toast.makeText(SignUp_Form.this, "Password too short..", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignupActivity.this, "Password too short..", Toast.LENGTH_SHORT).show();
 
 
                 }
@@ -74,7 +74,7 @@ public class SignUp_Form extends AppCompatActivity {
                 if (password.equals(confirmPassword)) {
 
                     firebaseAuth.createUserWithEmailAndPassword(email, password)
-                            .addOnCompleteListener(SignUp_Form.this, new OnCompleteListener<AuthResult>() {
+                            .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
 
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -82,10 +82,10 @@ public class SignUp_Form extends AppCompatActivity {
                                     progressBar.setVisibility(View.GONE);
                                     if (task.isSuccessful()) {
                                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                                        Toast.makeText(SignUp_Form.this, "Registration Complete", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(SignupActivity.this, "Registration Complete", Toast.LENGTH_SHORT).show();
 
                                     } else {
-                                        Toast.makeText(SignUp_Form.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(SignupActivity.this, "Authentication Failed", Toast.LENGTH_SHORT).show();
                                     }
 
                                 }
@@ -96,6 +96,6 @@ public class SignUp_Form extends AppCompatActivity {
     }
 
     public void button_signUpForm(View view) {
-        startActivity(new Intent(getApplicationContext(), SignUp_Form.class));
+        startActivity(new Intent(getApplicationContext(), SignupActivity.class));
     }
 }

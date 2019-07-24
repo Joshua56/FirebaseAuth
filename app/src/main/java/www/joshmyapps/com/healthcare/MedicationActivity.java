@@ -6,7 +6,7 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Medication extends AppCompatActivity {
+public class MedicationActivity extends AppCompatActivity {
 
     public static String disease;
 
@@ -18,7 +18,7 @@ public class Medication extends AppCompatActivity {
 
         if (intent.hasExtra("Disease")) {
             disease = intent.getStringExtra(getString(R.string.disease_key));
-            Log.d(Medication.class.getSimpleName(), disease);
+            Log.d(MedicationActivity.class.getSimpleName(), disease);
             if (getSupportActionBar() != null)
                 getSupportActionBar().setTitle(disease);
         }
