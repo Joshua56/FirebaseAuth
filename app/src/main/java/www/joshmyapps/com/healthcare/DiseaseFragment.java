@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -36,11 +37,18 @@ public class DiseaseFragment extends Fragment {
     private RadioGroup mRadioGroup;
     private Button mSubmitButton;
     private View mViews;
+    private LocationManager mLocationManager;
 
     public DiseaseFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mLocationManager = new LocationManager(getContext());
+        getLifecycle().addObserver(mLocationManager);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -98,6 +106,7 @@ public class DiseaseFragment extends Fragment {
             }
         });
         mTextview.setText(statement);
+
     }
 
     public void saveToFirebase(String type, String days, String tookMedication) {
@@ -128,11 +137,15 @@ public class DiseaseFragment extends Fragment {
     }
 
     private Map<String, String> parseDiseaseData(final Disease disease) {
+        final String lat = String.valueOf(mLocationManager.getLastLocation().get("latitude"));
+        final String lon = String.valueOf(mLocationManager.getLastLocation().get("longitude"));
         return new HashMap<String, String>() {
             {
                 put("type", disease.getType());
                 put("days", disease.getDays());
                 put("medication", disease.tookMedication());
+                put("latitude", lat);
+                put("longitude", lon);
             }
         };
     }
