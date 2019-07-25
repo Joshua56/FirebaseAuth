@@ -22,6 +22,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -91,10 +93,8 @@ public class DiseaseFragment extends Fragment {
                     Log.d("Crashing::", mRadioButton.getText().toString());
                     String tookMedication = mRadioButton.getText().toString();
                     saveToFirebase(MedicationActivity.disease, days, tookMedication);
-                    Toast.makeText(getContext(), "Submitted", Toast.LENGTH_LONG).show();
-                    return;
+                    mDaysTextView.setText("0");
                 }
-                Toast.makeText(getContext(), "Not Submitted", Toast.LENGTH_LONG).show();
             }
         });
         mTextview.setText(statement);
@@ -104,11 +104,12 @@ public class DiseaseFragment extends Fragment {
         Disease vDisease = new Disease(type, days, tookMedication);
         FirebaseUser vFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseFirestore vFirebaseFirestore = FirebaseFirestore.getInstance();
+        Timestamp ts = new Timestamp(new Date().getTime());
         if (vFirebaseUser != null) {
             vFirebaseFirestore.collection("users")
                     .document(vFirebaseUser.getUid())
                     .collection("diseases")
-                    .document(MedicationActivity.disease)
+                    .document(ts.toString())
                     .set(parseDiseaseData(vDisease))
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
