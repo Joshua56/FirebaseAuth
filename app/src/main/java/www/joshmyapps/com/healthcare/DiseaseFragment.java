@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -22,6 +23,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,11 +37,18 @@ public class DiseaseFragment extends Fragment {
     private RadioGroup mRadioGroup;
     private Button mSubmitButton;
     private View mViews;
+    private LocationManager mLocationManager;
 
     public DiseaseFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mLocationManager = new LocationManager(getContext());
+        getLifecycle().addObserver(mLocationManager);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -91,24 +101,24 @@ public class DiseaseFragment extends Fragment {
                     Log.d("Crashing::", mRadioButton.getText().toString());
                     String tookMedication = mRadioButton.getText().toString();
                     saveToFirebase(MedicationActivity.disease, days, tookMedication);
-                    Toast.makeText(getContext(), "Submitted", Toast.LENGTH_LONG).show();
-                    return;
+                    mDaysTextView.setText("0");
                 }
-                Toast.makeText(getContext(), "Not Submitted", Toast.LENGTH_LONG).show();
             }
         });
         mTextview.setText(statement);
+
     }
 
     public void saveToFirebase(String type, String days, String tookMedication) {
         Disease vDisease = new Disease(type, days, tookMedication);
         FirebaseUser vFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseFirestore vFirebaseFirestore = FirebaseFirestore.getInstance();
+        Timestamp ts = new Timestamp(new Date().getTime());
         if (vFirebaseUser != null) {
             vFirebaseFirestore.collection("users")
                     .document(vFirebaseUser.getUid())
                     .collection("diseases")
-                    .document(MedicationActivity.disease)
+                    .document(ts.toString())
                     .set(parseDiseaseData(vDisease))
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -127,11 +137,15 @@ public class DiseaseFragment extends Fragment {
     }
 
     private Map<String, String> parseDiseaseData(final Disease disease) {
+        final String lat = String.valueOf(mLocationManager.getLastLocation().get("latitude"));
+        final String lon = String.valueOf(mLocationManager.getLastLocation().get("longitude"));
         return new HashMap<String, String>() {
             {
                 put("type", disease.getType());
                 put("days", disease.getDays());
                 put("medication", disease.tookMedication());
+                put("latitude", lat);
+                put("longitude", lon);
             }
         };
     }
