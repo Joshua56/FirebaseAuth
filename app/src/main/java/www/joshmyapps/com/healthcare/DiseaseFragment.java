@@ -144,6 +144,7 @@ public class DiseaseFragment extends Fragment {
     private Map<String, String> parseDiseaseData(final Disease disease) {
         final String lat = String.valueOf(mLocationManager.getLastLocation().get("latitude"));
         final String lon = String.valueOf(mLocationManager.getLastLocation().get("longitude"));
+        Log.d(DiseaseFragment.class.getSimpleName(), lat);
         return new HashMap<String, String>() {
             {
                 put("type", disease.getType());
