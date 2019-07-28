@@ -15,4 +15,13 @@
     <string name="disease_key">Disease</string>
     <string name="_0">0</string>
     <string name="sign_out">Sign Out</string>
+    <string name="trimester">Trimester</string>
+    <string name="enter_location">Enter Location</string>
+    <string name="enter_reason">Enter Reason</string>
+    <string name="diarrhoea">Diarrhoea</string>
+    <string name="fever">Fever</string>
+    <string name="diarrhoea_image">Diarrhoea image</string>
+    <string name="fever_image">Fever image</string>
+    <string name="cough_image">Cough Image</string>
+    <string name="cough">Cough</string>
 </resources>

@@ -31,13 +31,14 @@
         <activity
             android:name=".MedicationActivity"
             android:label="Medication"
-            android:parentActivityName=".CommunityActivity"/>
+            android:parentActivityName=".DiseasesActivity"/>
         <activity
-            android:name=".CommunityActivity"
-            android:label="Community" />
+            android:name=".DiseasesActivity"
+            android:label="Community"
+            android:parentActivityName=".CommunityActivity"/>
         <activity android:name=".SignupActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name=".CommunityActivity"
             android:label="Community"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".LoginActivity">
