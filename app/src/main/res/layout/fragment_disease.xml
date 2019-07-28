@@ -16,43 +16,7 @@
         android:textSize="20sp"
         tools:text="Cough for how many days?" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
-
-        <ImageButton
-            android:id="@+id/dec_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:backgroundTint="#ffffff"
-            android:minHeight="20dp"
-            android:src="@drawable/ic_decrease" />
-
-        <TextView
-            android:id="@+id/days_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:minWidth="64dp"
-            android:minHeight="54dp"
-            android:padding="8dp"
-            android:text="@string/_0"
-            android:textAlignment="center"
-            android:textSize="20sp" />
-
-        <ImageButton
-            android:id="@+id/inc_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:backgroundTint="#ffffff"
-            android:minHeight="20dp"
-            android:src="@drawable/ic_increase" />
-    </LinearLayout>
+    <include layout="@layout/counter_layout"/>
 
     <TextView
         android:layout_width="match_parent"

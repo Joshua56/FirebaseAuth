@@ -21,12 +21,9 @@ public class HealthWorkerActivity extends AppCompatActivity implements Navigatio
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_health_worker);
-
         Toolbar vToolbar = findViewById(R.id.health_worker_toolbar);
         setSupportActionBar(vToolbar);
-        /* Reference drawer layout */
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        /* Add toggle and keep in sync */
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this,
                 drawer,

@@ -1,6 +1,7 @@
 package www.joshmyapps.com.healthcare;
 
 
+import android.app.Notification;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -103,6 +105,9 @@ public class DiseaseFragment extends Fragment {
                     saveToFirebase(MedicationActivity.disease, days, tookMedication);
                     mDaysTextView.setText("0");
                 }
+                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(getContext());
+                Notification notif = Notifications.INSTANCE.sendNotification(getContext(), MedicationActivity.disease).build();
+                notificationManager.notify(1, notif);
             }
         });
         mTextview.setText(statement);

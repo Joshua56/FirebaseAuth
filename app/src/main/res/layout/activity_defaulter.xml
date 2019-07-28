@@ -6,4 +6,121 @@
     android:layout_height="match_parent"
     tools:context=".DefaulterActivity">
 
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:entries="@array/defaulter"
+        android:minHeight="50dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/trimester"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/spinner" />
+
+    <LinearLayout
+        android:id="@+id/counter_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView">
+
+        <ImageButton
+            android:id="@+id/dec_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:backgroundTint="#ffffff"
+            android:minHeight="20dp"
+            android:src="@drawable/ic_decrease" />
+
+        <TextView
+            android:id="@+id/days_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="64dp"
+            android:minHeight="54dp"
+            android:padding="8dp"
+            android:text="@string/_0"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:id="@+id/inc_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:backgroundTint="#ffffff"
+            android:minHeight="20dp"
+            android:src="@drawable/ic_increase" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/label_reason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Reason"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/counter_view" />
+
+    <EditText
+        android:id="@+id/reason_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:autofillHints="None"
+        android:hint="@string/enter_reason"
+        android:inputType="text"
+        android:minHeight="150dp"
+        android:textColor="?colorAccent"
+        app:layout_constraintTop_toBottomOf="@id/label_reason" />
+
+    <TextView
+        android:id="@+id/label_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Location"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/reason_edit_text" />
+
+    <EditText
+        android:id="@+id/location_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:autofillHints="None"
+        android:hint="@string/enter_location"
+        android:inputType="text"
+        android:textColor="?colorAccent"
+        app:layout_constraintTop_toBottomOf="@id/label_location" />
+
+    <Button
+        android:id="@+id/submit_defaulter_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:background="@drawable/button_rounded"
+        android:onClick="submitDefaulter"
+        android:text="@string/submit"
+        android:textColor="#fff"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@id/location_edit_text" />
 </androidx.constraintlayout.widget.ConstraintLayout>

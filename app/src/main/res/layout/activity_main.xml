@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="32dp"
         android:background="@drawable/button_rounded"
-        android:onClick="community"
+        android:onClick="openDiseaseView"
         android:text="Community leader"
         android:textColor="#fff"
         android:textSize="22sp" />
