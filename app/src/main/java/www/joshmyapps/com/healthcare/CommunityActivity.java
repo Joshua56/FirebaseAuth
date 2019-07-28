@@ -41,7 +41,7 @@ public class CommunityActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void community(View view) {
+    public void openDiseaseView(View view) {
         startActivity(new Intent(getApplicationContext(), DiseasesActivity.class));
     }
 
