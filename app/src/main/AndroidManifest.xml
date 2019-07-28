@@ -3,7 +3,8 @@
     package="www.joshmyapps.com.healthcare">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -15,33 +16,44 @@
         <activity
             android:name=".ChatRoomActivity"
             android:label="Chat Room"
-            android:parentActivityName=".HealthWorkerActivity" />
+            android:parentActivityName=".HealthWorkerActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".DefaulterActivity"
             android:label="Defaulter Tracking"
-            android:parentActivityName=".HealthWorkerActivity" />
+            android:parentActivityName=".HealthWorkerActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ReportActivity"
             android:label="Report"
-            android:parentActivityName=".HealthWorkerActivity" />
+            android:parentActivityName=".HealthWorkerActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".HealthWorkerActivity"
             android:label="Health Worker"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MedicationActivity"
             android:label="Medication"
-            android:parentActivityName=".DiseasesActivity"/>
+            android:parentActivityName=".DiseasesActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".DiseasesActivity"
             android:label="Community"
-            android:parentActivityName=".CommunityActivity"/>
-        <activity android:name=".SignupActivity" />
+            android:parentActivityName=".CommunityActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SignupActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".CommunityActivity"
             android:label="Community"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".LoginActivity">
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

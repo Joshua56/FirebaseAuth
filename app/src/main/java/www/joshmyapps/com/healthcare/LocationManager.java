@@ -52,6 +52,7 @@ public final class LocationManager implements LifecycleObserver {
                 .addOnSuccessListener((Activity) context, new OnSuccessListener<Location>() {
                     @Override
                     public void onSuccess(Location location) {
+                        Log.d(LocationManager.class.getSimpleName(), "Success : " + location.toString());
                         if (location != null) {
                             mLatitude = location.getLatitude();
                             mLongitude = location.getLongitude();

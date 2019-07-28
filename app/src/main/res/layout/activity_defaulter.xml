@@ -101,16 +101,16 @@
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/reason_edit_text" />
 
-    <EditText
-        android:id="@+id/location_edit_text"
+    <TextView
+        android:id="@+id/location_text_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:autofillHints="None"
-        android:hint="@string/enter_location"
-        android:inputType="text"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
         android:textColor="?colorAccent"
-        app:layout_constraintTop_toBottomOf="@id/label_location" />
+        app:layout_constraintTop_toBottomOf="@id/label_location"
+        tools:text="Longitude -
+Latitude - " />
 
     <Button
         android:id="@+id/submit_defaulter_button"
@@ -122,5 +122,5 @@
         android:text="@string/submit"
         android:textColor="#fff"
         android:textSize="22sp"
-        app:layout_constraintTop_toBottomOf="@id/location_edit_text" />
+        app:layout_constraintTop_toBottomOf="@id/location_text_view" />
 </androidx.constraintlayout.widget.ConstraintLayout>
