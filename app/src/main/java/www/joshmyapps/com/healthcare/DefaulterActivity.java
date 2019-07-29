@@ -66,11 +66,9 @@ public class DefaulterActivity extends LocationActivity {
     }
 
     public void submitDefaulter(View view) {
-        Log.d("DEF", "Clicked");
         FirebaseUser vFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         FirebaseFirestore vFirebaseFirestore = FirebaseFirestore.getInstance();
         if (vFirebaseUser != null) {
-            Log.d("DEF", "not null");
             vFirebaseFirestore.collection("defaulters")
                     .document(vFirebaseUser.getUid())
                     .collection(mDefaulterSpinner.getSelectedItem().toString())
