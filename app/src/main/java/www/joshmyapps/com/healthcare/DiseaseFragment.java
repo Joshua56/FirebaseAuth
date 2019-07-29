@@ -100,7 +100,6 @@ public class DiseaseFragment extends Fragment {
                 }
                 if (mRadioButton != null) {
                     String days = mDaysTextView.getText().toString();
-                    Log.d("Crashing::", mRadioButton.getText().toString());
                     String tookMedication = mRadioButton.getText().toString();
                     saveToFirebase(MedicationActivity.disease, days, tookMedication);
                     mDaysTextView.setText("0");

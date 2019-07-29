@@ -21,10 +21,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created By David Odari
- * On 25/07/19
- **/
+
 public final class LocationManager implements LifecycleObserver {
     private FusedLocationProviderClient fusedLocationClient;
     private Context context;
