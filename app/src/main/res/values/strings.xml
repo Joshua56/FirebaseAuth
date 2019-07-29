@@ -25,4 +25,5 @@
     <string name="cough_image">Cough Image</string>
     <string name="cough">Cough</string>
     <string name="channel_name">notification disease channel</string>
+    <string name="days">Days</string>
 </resources>

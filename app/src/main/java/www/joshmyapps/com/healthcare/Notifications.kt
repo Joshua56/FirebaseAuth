@@ -6,11 +6,6 @@ import android.content.Context
 import android.os.Build
 import androidx.core.app.NotificationCompat
 
-/**
- * Created By David Odari
- * On 28/07/19
- *
- **/
 object Notifications {
     private const val notificationTitle = "Symptoms"
     private const val CHANNEL_ID = ""

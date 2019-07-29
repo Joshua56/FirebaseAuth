@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_log_in__form);
+        setContentView(R.layout.activity_login);
         if (getSupportActionBar() != null)
             getSupportActionBar().setTitle("Welcome to community Health");
 

@@ -1,9 +1,5 @@
 package www.joshmyapps.com.healthcare;
 
-/**
- * Created By David Odari
- * On 25/07/19
- **/
 public final class Disease {
     private String type;
     private String days;

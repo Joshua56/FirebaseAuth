@@ -5,4 +5,10 @@
         <item>TB</item>
         <item>HIV</item>
     </string-array>
+
+    <string-array name="cases">
+        <item>Malaria</item>
+        <item>Cholera</item>
+        <item>Typhoid</item>
+    </string-array>
 </resources>

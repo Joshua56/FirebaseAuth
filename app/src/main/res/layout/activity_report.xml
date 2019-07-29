@@ -6,4 +6,142 @@
     android:layout_height="match_parent"
     tools:context=".ReportActivity">
 
+
+    <Spinner
+        android:id="@+id/case_spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:entries="@array/cases"
+        android:minHeight="50dp"
+        android:padding="8dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:text="@string/days"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/case_spinner" />
+
+    <LinearLayout
+        android:id="@+id/counter_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView">
+
+        <ImageButton
+            android:onClick="reduceDays"
+            android:id="@+id/dec_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:backgroundTint="#ffffff"
+            android:minHeight="20dp"
+            android:src="@drawable/ic_decrease" />
+
+        <TextView
+            android:id="@+id/days_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="64dp"
+            android:minHeight="54dp"
+            android:padding="8dp"
+            android:text="@string/_0"
+            android:textAlignment="center"
+            android:textSize="20sp" />
+
+        <ImageButton
+            android:onClick="increaseDays"
+            android:id="@+id/inc_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:backgroundTint="#ffffff"
+            android:minHeight="20dp"
+            android:src="@drawable/ic_increase" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/med_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:padding="8dp"
+        android:text="@string/took_medication"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/counter_view" />
+
+    <RadioGroup
+        android:id="@+id/medication_radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/med_label">
+
+        <RadioButton
+            android:id="@+id/yes_radio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/yes" />
+
+        <RadioButton
+            android:id="@+id/no_radio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/no" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/longitude_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:drawableStart="@drawable/ic_location"
+        android:drawableLeft="@drawable/ic_location"
+        android:textAlignment="center"
+        android:textColor="?colorAccent"
+        app:layout_constraintTop_toBottomOf="@id/medication_radio_group"
+        tools:text="Longitude-323232232" />
+
+    <TextView
+        android:id="@+id/latitude_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:drawableStart="@drawable/ic_location"
+        android:drawableLeft="@drawable/ic_location"
+        android:textAlignment="center"
+        android:textColor="?colorAccent"
+        app:layout_constraintTop_toBottomOf="@id/longitude_text_view"
+        tools:text="Longitude -9090909" />
+
+    <Button
+        android:id="@+id/submit_defaulter_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="32dp"
+        android:background="@drawable/button_rounded"
+        android:onClick="reportCase"
+        android:text="@string/submit"
+        android:textColor="#fff"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

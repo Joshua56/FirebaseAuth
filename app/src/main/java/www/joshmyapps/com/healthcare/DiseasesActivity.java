@@ -13,7 +13,7 @@ public class DiseasesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_community__leader);
+        setContentView(R.layout.activity_disease);
         if (getSupportActionBar() != null)
             getSupportActionBar().setTitle("Diseases");
         diarrhoeaIntent = new Intent(DiseasesActivity.this, MedicationActivity.class);
