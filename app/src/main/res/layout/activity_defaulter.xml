@@ -7,7 +7,7 @@
     tools:context=".DefaulterActivity">
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/defaulter_spinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -26,7 +26,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinner" />
+        app:layout_constraintTop_toBottomOf="@id/defaulter_spinner" />
 
     <LinearLayout
         android:id="@+id/counter_view"
