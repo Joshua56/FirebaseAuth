@@ -26,4 +26,5 @@
     <string name="cough">Cough</string>
     <string name="channel_name">notification disease channel</string>
     <string name="days">Days</string>
+    <string name="external_storage_rationale">Permission is required to upload a picture.</string>
 </resources>

@@ -14,13 +14,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import static www.joshmyapps.com.healthcare.ConstantsKt.COARSE_LOCATION_RQ_CODE;
+import static www.joshmyapps.com.healthcare.ConstantsKt.FINE_LOCATION_RQ_CODE;
+
 public class LocationActivity extends AppCompatActivity implements LocationListener {
 
     public String latitude;
     public String longitude;
     private LocationManager mLocationManager;
-    private static final int MY_PERMISSIONS_REQUEST_COARSE_LOCATION = 001;
-    private static final int MY_PERMISSIONS_REQUEST_FINE_LOCATION = 002;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,7 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
             } else {
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
-                        MY_PERMISSIONS_REQUEST_FINE_LOCATION);
+                        FINE_LOCATION_RQ_CODE);
             }
         } else {
             mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
@@ -66,21 +68,17 @@ public class LocationActivity extends AppCompatActivity implements LocationListe
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
-            case MY_PERMISSIONS_REQUEST_COARSE_LOCATION: {
+            case COARSE_LOCATION_RQ_CODE: {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-                } else {
-
                 }
                 return;
             }
-            case MY_PERMISSIONS_REQUEST_FINE_LOCATION: {
+            case FINE_LOCATION_RQ_CODE: {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
-                } else {
-
                 }
                 return;
             }

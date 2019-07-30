@@ -1,6 +1,10 @@
 package www.joshmyapps.com.healthcare;
 
+import android.Manifest;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.location.Location;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.StringRes;
+import androidx.appcompat.app.AlertDialog;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -23,6 +29,16 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import permissions.dispatcher.NeedsPermission;
+import permissions.dispatcher.OnNeverAskAgain;
+import permissions.dispatcher.OnPermissionDenied;
+import permissions.dispatcher.OnShowRationale;
+import permissions.dispatcher.PermissionRequest;
+import permissions.dispatcher.RuntimePermissions;
+
+import static www.joshmyapps.com.healthcare.ConstantsKt.GALLERY_RQ_CODE;
+
+@RuntimePermissions
 public class ReportActivity extends LocationActivity {
 
     private TextView mTvLongitude;
@@ -109,5 +125,56 @@ public class ReportActivity extends LocationActivity {
     public void increaseDays(View view) {
         int days = Integer.parseInt(mTvDays.getText().toString()) + 1;
         mTvDays.setText(String.valueOf(days));
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        ReportActivityPermissionsDispatcher.onRequestPermissionsResult(ReportActivity.this, requestCode, grantResults);
+    }
+
+    @NeedsPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+    public void pickImage() {
+        Intent intent=new Intent(Intent.ACTION_PICK);
+        intent.setType("image/*");
+        String[] mimeTypes = {"image/jpeg", "image/png"};
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            intent.putExtra(Intent.EXTRA_MIME_TYPES,mimeTypes);
+        }
+        startActivityForResult(intent, GALLERY_RQ_CODE);
+    }
+
+    @OnPermissionDenied(Manifest.permission.READ_EXTERNAL_STORAGE)
+    public void onCameraDenied() {
+        Toast.makeText(this, "No Permission to access media", Toast.LENGTH_SHORT).show();
+    }
+
+    @OnNeverAskAgain(Manifest.permission.READ_EXTERNAL_STORAGE)
+    public void onCameraNeverAskAgain() {
+        Toast.makeText(this, "Enable permission from settings", Toast.LENGTH_SHORT).show();
+    }
+
+    @OnShowRationale(Manifest.permission.READ_EXTERNAL_STORAGE)
+    void showRationaleForCamera(PermissionRequest request) {
+        showRationaleDialog(R.string.external_storage_rationale, request);
+    }
+
+    private void showRationaleDialog(@StringRes int messageResId, final PermissionRequest request) {
+        new AlertDialog.Builder(this)
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(@NonNull DialogInterface dialog, int which) {
+                        request.proceed();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(@NonNull DialogInterface dialog, int which) {
+                        request.cancel();
+                    }
+                })
+                .setCancelable(false)
+                .setMessage(messageResId)
+                .show();
     }
 }
