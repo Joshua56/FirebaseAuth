@@ -1,147 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ReportActivity">
+    android:layout_height="match_parent">
 
-
-    <Spinner
-        android:id="@+id/case_spinner"
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="32dp"
-        android:entries="@array/cases"
-        android:minHeight="50dp"
-        android:padding="8dp"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:context=".ReportActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="32dp"
-        android:text="@string/days"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/case_spinner" />
 
-    <LinearLayout
-        android:id="@+id/counter_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="16dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView">
-
-        <ImageButton
-            android:onClick="reduceDays"
-            android:id="@+id/dec_button"
-            android:layout_width="wrap_content"
+        <Spinner
+            android:id="@+id/case_spinner"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:backgroundTint="#ffffff"
-            android:minHeight="20dp"
-            android:src="@drawable/ic_decrease" />
+            android:layout_margin="32dp"
+            android:entries="@array/cases"
+            android:minHeight="50dp"
+            android:padding="8dp"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/days_text_view"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minWidth="64dp"
-            android:minHeight="54dp"
-            android:padding="8dp"
-            android:text="@string/_0"
-            android:textAlignment="center"
-            android:textSize="20sp" />
+            android:layout_margin="32dp"
+            android:text="@string/days"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/case_spinner" />
 
-        <ImageButton
-            android:onClick="increaseDays"
-            android:id="@+id/inc_button"
+        <LinearLayout
+            android:id="@+id/counter_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:backgroundTint="#ffffff"
-            android:minHeight="20dp"
-            android:src="@drawable/ic_increase" />
-    </LinearLayout>
+            android:layout_margin="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView">
 
-    <TextView
-        android:id="@+id/med_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:padding="8dp"
-        android:text="@string/took_medication"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/counter_view" />
+            <ImageButton
+                android:id="@+id/dec_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:backgroundTint="#ffffff"
+                android:minHeight="20dp"
+                android:onClick="reduceDays"
+                android:src="@drawable/ic_decrease" />
 
-    <RadioGroup
-        android:id="@+id/medication_radio_group"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/med_label">
+            <TextView
+                android:id="@+id/days_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="64dp"
+                android:minHeight="54dp"
+                android:padding="8dp"
+                android:text="@string/_0"
+                android:textAlignment="center"
+                android:textSize="20sp" />
 
-        <RadioButton
-            android:id="@+id/yes_radio"
+            <ImageButton
+                android:id="@+id/inc_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:backgroundTint="#ffffff"
+                android:minHeight="20dp"
+                android:onClick="increaseDays"
+                android:src="@drawable/ic_increase" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/med_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/yes" />
+            android:layout_margin="16dp"
+            android:padding="8dp"
+            android:text="@string/took_medication"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintTop_toBottomOf="@id/counter_view" />
 
-        <RadioButton
-            android:id="@+id/no_radio"
+        <RadioGroup
+            android:id="@+id/medication_radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/med_label">
+
+            <RadioButton
+                android:id="@+id/yes_radio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/yes" />
+
+            <RadioButton
+                android:id="@+id/no_radio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/no" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/longitude_text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/no" />
-    </RadioGroup>
+            android:layout_margin="32dp"
+            android:drawableStart="@drawable/ic_location"
+            android:drawableLeft="@drawable/ic_location"
+            android:textAlignment="center"
+            android:textColor="?colorAccent"
+            app:layout_constraintTop_toBottomOf="@id/medication_radio_group"
+            tools:text="Longitude-323232232" />
 
-    <TextView
-        android:id="@+id/longitude_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="32dp"
-        android:drawableStart="@drawable/ic_location"
-        android:drawableLeft="@drawable/ic_location"
-        android:textAlignment="center"
-        android:textColor="?colorAccent"
-        app:layout_constraintTop_toBottomOf="@id/medication_radio_group"
-        tools:text="Longitude-323232232" />
+        <TextView
+            android:id="@+id/latitude_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="32dp"
+            android:drawableStart="@drawable/ic_location"
+            android:drawableLeft="@drawable/ic_location"
+            android:textAlignment="center"
+            android:textColor="?colorAccent"
+            app:layout_constraintTop_toBottomOf="@id/longitude_text_view"
+            tools:text="Longitude -9090909" />
 
-    <TextView
-        android:id="@+id/latitude_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="32dp"
-        android:drawableStart="@drawable/ic_location"
-        android:drawableLeft="@drawable/ic_location"
-        android:textAlignment="center"
-        android:textColor="?colorAccent"
-        app:layout_constraintTop_toBottomOf="@id/longitude_text_view"
-        tools:text="Longitude -9090909" />
+        <FrameLayout
+            android:id="@+id/frame_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/latitude_text_view">
 
-    <Button
-        android:id="@+id/submit_defaulter_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="32dp"
-        android:background="@drawable/button_rounded"
-        android:onClick="reportCase"
-        android:text="@string/submit"
-        android:textColor="#fff"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+            <www.joshmyapps.com.healthcare.CustomImageView
+                android:id="@+id/uploaded_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/uploaded_from_gallery"
+                android:minHeight="50dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_add_a_photo" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/image_placeholder_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:padding="16dp"
+                android:text="Attach Image"
+                android:textAlignment="center" />
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/submit_defaulter_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="32dp"
+            android:background="@drawable/button_rounded"
+            android:onClick="reportCase"
+            android:text="@string/submit"
+            android:textColor="#fff"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/frame_layout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

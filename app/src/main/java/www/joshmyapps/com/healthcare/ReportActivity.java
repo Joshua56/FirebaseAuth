@@ -1,13 +1,17 @@
 package www.joshmyapps.com.healthcare;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -15,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
 
@@ -47,6 +52,8 @@ public class ReportActivity extends LocationActivity {
     private Spinner mCaseSpinner;
     private RadioGroup mRadioGroup;
     private RadioButton mRadioButton;
+    private ImageView mSelectedImageView;
+    private TextView mImageText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +64,26 @@ public class ReportActivity extends LocationActivity {
         mCaseSpinner = findViewById(R.id.case_spinner);
         mTvDays = findViewById(R.id.days_text_view);
         mRadioGroup = findViewById(R.id.medication_radio_group);
+        mSelectedImageView = findViewById(R.id.uploaded_image_view);
+        mImageText = findViewById(R.id.image_placeholder_text);
+        FrameLayout vFrameLayout = findViewById(R.id.frame_layout);
+        vFrameLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ReportActivityPermissionsDispatcher.pickImageWithPermissionCheck(ReportActivity.this);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK)
+            if (requestCode == GALLERY_RQ_CODE) {
+                Uri selectedImage = data.getData();
+                mSelectedImageView.setImageURI(selectedImage);
+                mImageText.setVisibility(View.INVISIBLE);
+            }
     }
 
     @Override
@@ -135,11 +162,11 @@ public class ReportActivity extends LocationActivity {
 
     @NeedsPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
     public void pickImage() {
-        Intent intent=new Intent(Intent.ACTION_PICK);
+        Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType("image/*");
         String[] mimeTypes = {"image/jpeg", "image/png"};
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            intent.putExtra(Intent.EXTRA_MIME_TYPES,mimeTypes);
+            intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
         }
         startActivityForResult(intent, GALLERY_RQ_CODE);
     }
