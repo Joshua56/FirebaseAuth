@@ -23,11 +23,16 @@ import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AlertDialog;
 
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -54,6 +59,9 @@ public class ReportActivity extends LocationActivity {
     private RadioButton mRadioButton;
     private ImageView mSelectedImageView;
     private TextView mImageText;
+    private FirebaseStorage mFirebaseStorage;
+    private Uri mSelectedImage;
+    private StorageReference mStorageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +74,10 @@ public class ReportActivity extends LocationActivity {
         mRadioGroup = findViewById(R.id.medication_radio_group);
         mSelectedImageView = findViewById(R.id.uploaded_image_view);
         mImageText = findViewById(R.id.image_placeholder_text);
+
+        mFirebaseStorage = FirebaseStorage.getInstance();
+        mStorageReference = mFirebaseStorage.getReference().child("reports");
+
         FrameLayout vFrameLayout = findViewById(R.id.frame_layout);
         vFrameLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,8 +92,8 @@ public class ReportActivity extends LocationActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK)
             if (requestCode == GALLERY_RQ_CODE) {
-                Uri selectedImage = data.getData();
-                mSelectedImageView.setImageURI(selectedImage);
+                mSelectedImage = data.getData();
+                mSelectedImageView.setImageURI(mSelectedImage);
                 mImageText.setVisibility(View.INVISIBLE);
             }
     }
@@ -112,8 +124,29 @@ public class ReportActivity extends LocationActivity {
             report.put("latitude", latitude);
             report.put("longitude", longitude);
             sendToFirebase(report);
+            saveImageToFirebaseStorage(mSelectedImage,currentCase);
         }
 
+    }
+
+    private void saveImageToFirebaseStorage(Uri selectedImage,String rCase) {
+        if (selectedImage != null) {
+            final StorageReference mStoreRef = mStorageReference.child(rCase + selectedImage.getLastPathSegment());
+            mStoreRef.putFile(selectedImage).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                @Override
+                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                    if (!task.isSuccessful()) {
+                        Log.d(ReportActivity.class.getSimpleName(), "Saving Unsuccessful");
+                    }
+                    return mStoreRef.getDownloadUrl();
+                }
+            }).addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Log.d(ReportActivity.class.getSimpleName(), uri.toString());
+                }
+            });
+        }
     }
 
     private void sendToFirebase(Map<String, String> report) {
