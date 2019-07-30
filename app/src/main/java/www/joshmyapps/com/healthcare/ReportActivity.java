@@ -51,15 +51,12 @@ import static www.joshmyapps.com.healthcare.ConstantsKt.GALLERY_RQ_CODE;
 @RuntimePermissions
 public class ReportActivity extends LocationActivity {
 
-    private TextView mTvLongitude;
-    private TextView mTvLatitude;
     private TextView mTvDays;
     private Spinner mCaseSpinner;
     private RadioGroup mRadioGroup;
     private RadioButton mRadioButton;
     private ImageView mSelectedImageView;
     private TextView mImageText;
-    private FirebaseStorage mFirebaseStorage;
     private Uri mSelectedImage;
     private StorageReference mStorageReference;
 
@@ -67,16 +64,14 @@ public class ReportActivity extends LocationActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
-        mTvLongitude = findViewById(R.id.longitude_text_view);
-        mTvLatitude = findViewById(R.id.latitude_text_view);
         mCaseSpinner = findViewById(R.id.case_spinner);
         mTvDays = findViewById(R.id.days_text_view);
         mRadioGroup = findViewById(R.id.medication_radio_group);
         mSelectedImageView = findViewById(R.id.uploaded_image_view);
         mImageText = findViewById(R.id.image_placeholder_text);
 
-        mFirebaseStorage = FirebaseStorage.getInstance();
-        mStorageReference = mFirebaseStorage.getReference().child("reports");
+        FirebaseStorage vFirebaseStorage = FirebaseStorage.getInstance();
+        mStorageReference = vFirebaseStorage.getReference().child("reports");
 
         FrameLayout vFrameLayout = findViewById(R.id.frame_layout);
         vFrameLayout.setOnClickListener(new View.OnClickListener() {
@@ -103,8 +98,6 @@ public class ReportActivity extends LocationActivity {
         super.onLocationChanged(location);
         longitude = String.valueOf(location.getLongitude());
         latitude = String.valueOf(location.getLatitude());
-        mTvLatitude.setText(latitude);
-        mTvLongitude.setText(longitude);
     }
 
     public void reportCase(View view) {
@@ -121,15 +114,15 @@ public class ReportActivity extends LocationActivity {
             report.put("case", currentCase);
             report.put("tookMeds", tookMeds);
             report.put("days", days);
-            report.put("latitude", latitude);
-            report.put("longitude", longitude);
+            report.put("latitude", latitude != null ? latitude : "0.0");
+            report.put("longitude", longitude != null ? longitude : "0.0");
             sendToFirebase(report);
-            saveImageToFirebaseStorage(mSelectedImage,currentCase);
+            saveImageToFirebaseStorage(mSelectedImage, currentCase);
         }
 
     }
 
-    private void saveImageToFirebaseStorage(Uri selectedImage,String rCase) {
+    private void saveImageToFirebaseStorage(Uri selectedImage, String rCase) {
         if (selectedImage != null) {
             final StorageReference mStoreRef = mStorageReference.child(rCase + selectedImage.getLastPathSegment());
             mStoreRef.putFile(selectedImage).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {

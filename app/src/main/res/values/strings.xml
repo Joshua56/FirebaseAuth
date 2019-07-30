@@ -28,4 +28,7 @@
     <string name="days">Days</string>
     <string name="external_storage_rationale">Permission is required to upload a picture.</string>
     <string name="uploaded_from_gallery">Uploaded from gallery</string>
+    <string name="hint_name">Name</string>
+    <string name="hint_id">Enter Id</string>
+    <string name="attach_image">Attach Image</string>
 </resources>
