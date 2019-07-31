@@ -9,17 +9,45 @@
         android:layout_height="wrap_content"
         tools:context=".DefaulterActivity">
 
-        <Spinner
-            android:id="@+id/defaulter_spinner"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/defaulter_text_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:entries="@array/defaulter"
-            android:minHeight="50dp"
-            android:textAlignment="center"
+            android:hint="@string/hint_name"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/defaulter_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/id_text_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/hint_id"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/defaulter_text_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/id_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/textView"
@@ -29,7 +57,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/defaulter_spinner" />
+            app:layout_constraintTop_toBottomOf="@id/id_text_layout" />
 
         <LinearLayout
             android:id="@+id/counter_view"
@@ -95,36 +123,6 @@
             android:textColor="?colorAccent"
             app:layout_constraintTop_toBottomOf="@id/label_reason" />
 
-        <TextView
-            android:id="@+id/label_location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:text="Location"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/reason_edit_text" />
-
-        <TextView
-            android:id="@+id/latitude_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:drawableStart="@drawable/ic_location"
-            android:drawableLeft="@drawable/ic_location"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-            android:textColor="?colorAccent"
-            app:layout_constraintTop_toBottomOf="@id/label_location" />
-
-        <TextView
-            android:id="@+id/longitude_text_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:drawableStart="@drawable/ic_location"
-            android:drawableLeft="@drawable/ic_location"
-            android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-            android:textColor="?colorAccent"
-            app:layout_constraintTop_toBottomOf="@id/latitude_text_view" />
 
         <Button
             android:id="@+id/submit_defaulter_button"
@@ -137,6 +135,6 @@
             android:textColor="#fff"
             android:textSize="22sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/longitude_text_view" />
+            app:layout_constraintTop_toBottomOf="@id/reason_edit_text" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
