@@ -52,7 +52,7 @@ import static www.joshmyapps.com.healthcare.ConstantsKt.GALLERY_RQ_CODE;
 public class ReportActivity extends LocationActivity {
 
     private RadioGroup mRadioGroup;
-    private EditText mNameEditText, mIdEditText, mSymptomsEditText;
+    private EditText mNameEditText, mIdEditText, mSymptomsEditText, mHelpedEditText;
     private RadioButton mRadioButton;
     private ImageView mSelectedImageView;
     private TextView mImageText;
@@ -70,6 +70,7 @@ public class ReportActivity extends LocationActivity {
         mNameEditText = findViewById(R.id.report_name_edit_text);
         mIdEditText = findViewById(R.id.report_id_edit_text);
         mSymptomsEditText = findViewById(R.id.report_symptom_edit_text);
+        mHelpedEditText = findViewById(R.id.report_helped_edit_text);
 
         FirebaseStorage vFirebaseStorage = FirebaseStorage.getInstance();
         mStorageReference = vFirebaseStorage.getReference().child("reports");
@@ -111,14 +112,18 @@ public class ReportActivity extends LocationActivity {
             String tookMeds = mRadioButton.getText().toString();
             String id = mIdEditText.getText().toString();
             String symptoms = mSymptomsEditText.getText().toString();
-            Map<String, String> report = new HashMap<>();
             String name = mNameEditText.getText().toString();
+            String medicationHelped = mHelpedEditText.getText().toString();
+
+            Map<String, String> report = new HashMap<>();
             report.put("name", !name.equals("") ? name : "Not Provided");
             report.put("id", !id.equals("") ? id : "Not Provided");
             report.put("symptoms", symptoms.equals("") ? symptoms : "Not Provided");
+            report.put("medicationHelped", !medicationHelped.equals("") ? medicationHelped : "Not Provided");
             report.put("tookMeds", tookMeds);
             report.put("latitude", latitude != null ? latitude : "0.0");
             report.put("longitude", longitude != null ? longitude : "0.0");
+
             sendToFirebase(report);
             saveImageToFirebaseStorage(mSelectedImage, name);
         }

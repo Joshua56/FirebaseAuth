@@ -34,4 +34,5 @@
     <string name="case_traced">Case traced</string>
     <string name="id_number">ID Number</string>
     <string name="symptoms">Symptoms</string>
+    <string name="response">Response</string>
 </resources>

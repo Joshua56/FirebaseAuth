@@ -87,6 +87,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@id/med_label">
 
             <RadioButton
@@ -102,6 +103,31 @@
                 android:text="@string/no" />
         </RadioGroup>
 
+        <TextView
+            android:id="@+id/label_did_it_help"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="If yes, did it help?"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/medication_radio_group" />
+
+        <EditText
+            android:id="@+id/report_helped_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:autofillHints="None"
+            android:hint="@string/response"
+            android:inputType="text"
+            android:background="@drawable/et_rounded"
+            android:padding="4dp"
+            android:gravity="top"
+            android:backgroundTint="#ffd"
+            android:minHeight="200dp"
+            android:textColor="?colorAccent"
+            app:layout_constraintTop_toBottomOf="@id/label_did_it_help" />
+
         <FrameLayout
             android:id="@+id/frame_layout"
             android:layout_width="wrap_content"
@@ -109,7 +135,7 @@
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/medication_radio_group">
+            app:layout_constraintTop_toBottomOf="@id/report_helped_edit_text">
 
             <www.joshmyapps.com.healthcare.CustomImageView
                 android:id="@+id/uploaded_image_view"
