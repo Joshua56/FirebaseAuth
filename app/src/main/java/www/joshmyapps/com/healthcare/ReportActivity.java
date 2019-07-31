@@ -10,11 +10,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,9 +51,8 @@ import static www.joshmyapps.com.healthcare.ConstantsKt.GALLERY_RQ_CODE;
 @RuntimePermissions
 public class ReportActivity extends LocationActivity {
 
-    private TextView mTvDays;
-    private Spinner mCaseSpinner;
     private RadioGroup mRadioGroup;
+    private EditText mNameEditText, mIdEditText, mSymptomsEditText;
     private RadioButton mRadioButton;
     private ImageView mSelectedImageView;
     private TextView mImageText;
@@ -64,11 +63,13 @@ public class ReportActivity extends LocationActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
-        mCaseSpinner = findViewById(R.id.case_spinner);
-        mTvDays = findViewById(R.id.days_text_view);
         mRadioGroup = findViewById(R.id.medication_radio_group);
         mSelectedImageView = findViewById(R.id.uploaded_image_view);
         mImageText = findViewById(R.id.image_placeholder_text);
+
+        mNameEditText = findViewById(R.id.report_name_edit_text);
+        mIdEditText = findViewById(R.id.report_id_edit_text);
+        mSymptomsEditText = findViewById(R.id.report_symptom_edit_text);
 
         FirebaseStorage vFirebaseStorage = FirebaseStorage.getInstance();
         mStorageReference = vFirebaseStorage.getReference().child("reports");
@@ -107,17 +108,19 @@ public class ReportActivity extends LocationActivity {
             mRadioButton = findViewById(selectedId);
         }
         if (mRadioButton != null) {
-            String currentCase = mCaseSpinner.getSelectedItem().toString();
             String tookMeds = mRadioButton.getText().toString();
-            String days = mTvDays.getText().toString();
+            String id = mIdEditText.getText().toString();
+            String symptoms = mSymptomsEditText.getText().toString();
             Map<String, String> report = new HashMap<>();
-            report.put("case", currentCase);
+            String name = mNameEditText.getText().toString();
+            report.put("name", !name.equals("") ? name : "Not Provided");
+            report.put("id", !id.equals("") ? id : "Not Provided");
+            report.put("symptoms", symptoms.equals("") ? symptoms : "Not Provided");
             report.put("tookMeds", tookMeds);
-            report.put("days", days);
             report.put("latitude", latitude != null ? latitude : "0.0");
             report.put("longitude", longitude != null ? longitude : "0.0");
             sendToFirebase(report);
-            saveImageToFirebaseStorage(mSelectedImage, currentCase);
+            saveImageToFirebaseStorage(mSelectedImage, name);
         }
 
     }
@@ -164,20 +167,6 @@ public class ReportActivity extends LocationActivity {
                         }
                     });
         }
-    }
-
-    public void reduceDays(View view) {
-        int days = Integer.parseInt(mTvDays.getText().toString());
-        if (days > 0) {
-            mTvDays.setText(String.valueOf(days - 1));
-            return;
-        }
-        Toast.makeText(ReportActivity.this, "Invalid operation", Toast.LENGTH_LONG).show();
-    }
-
-    public void increaseDays(View view) {
-        int days = Integer.parseInt(mTvDays.getText().toString()) + 1;
-        mTvDays.setText(String.valueOf(days));
     }
 
     @Override

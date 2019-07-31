@@ -9,75 +9,66 @@
         android:layout_height="wrap_content"
         tools:context=".ReportActivity">
 
-
-        <Spinner
-            android:id="@+id/case_spinner"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/report_name_text_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="32dp"
-            android:entries="@array/cases"
-            android:minHeight="50dp"
-            android:padding="8dp"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="32dp"
-            android:text="@string/days"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/case_spinner" />
-
-        <LinearLayout
-            android:id="@+id/counter_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_margin="16dp"
-            android:orientation="horizontal"
+            android:hint="@string/hint_name"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView">
+            app:layout_constraintTop_toTopOf="parent">
 
-            <ImageButton
-                android:id="@+id/dec_button"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/report_name_edit_text"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="4dp"
-                android:backgroundTint="#ffffff"
-                android:minHeight="20dp"
-                android:onClick="reduceDays"
-                android:src="@drawable/ic_decrease" />
+                android:inputType="text" />
 
-            <TextView
-                android:id="@+id/days_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="64dp"
-                android:minHeight="54dp"
-                android:padding="8dp"
-                android:text="@string/_0"
-                android:textAlignment="center"
-                android:textSize="20sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <ImageButton
-                android:id="@+id/inc_button"
-                android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/report_id_text_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/id_number"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/report_name_text_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/report_id_edit_text"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="4dp"
-                android:backgroundTint="#ffffff"
-                android:minHeight="20dp"
-                android:onClick="increaseDays"
-                android:src="@drawable/ic_increase" />
-        </LinearLayout>
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/report_symptom_text_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:hint="@string/symptoms"
+            app:errorEnabled="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/report_id_text_layout">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/report_symptom_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/med_label"
@@ -88,7 +79,7 @@
             android:text="@string/took_medication"
             android:textAlignment="center"
             android:textSize="20sp"
-            app:layout_constraintTop_toBottomOf="@id/counter_view" />
+            app:layout_constraintTop_toBottomOf="@id/report_symptom_text_layout" />
 
         <RadioGroup
             android:id="@+id/medication_radio_group"
@@ -111,13 +102,11 @@
                 android:text="@string/no" />
         </RadioGroup>
 
-
         <FrameLayout
             android:id="@+id/frame_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/medication_radio_group">
@@ -126,9 +115,9 @@
                 android:id="@+id/uploaded_image_view"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:layout_gravity="top"
                 android:contentDescription="@string/uploaded_from_gallery"
-                android:minHeight="50dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/ic_add_a_photo" />
 
@@ -136,7 +125,7 @@
                 android:id="@+id/image_placeholder_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
+                android:layout_gravity="center"
                 android:padding="16dp"
                 android:text="@string/attach_image"
                 android:textAlignment="center" />
@@ -152,7 +141,6 @@
             android:text="@string/submit"
             android:textColor="#fff"
             android:textSize="22sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/frame_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
