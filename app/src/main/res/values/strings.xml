@@ -31,4 +31,6 @@
     <string name="hint_name">Name</string>
     <string name="hint_id">Enter Id</string>
     <string name="attach_image">Attach Image</string>
+    <string name="case_traced">Case traced</string>
+    <string name="id_number">ID Number</string>
 </resources>
