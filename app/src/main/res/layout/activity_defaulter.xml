@@ -35,7 +35,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:hint="@string/hint_id"
+            android:hint="@string/id_number"
             app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,67 +49,35 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/case_text_layout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/trimester"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/id_text_layout" />
-
-        <LinearLayout
-            android:id="@+id/counter_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_margin="16dp"
-            android:orientation="horizontal"
+            android:hint="@string/case_traced"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView">
+            app:layout_constraintTop_toBottomOf="@id/id_text_layout">
 
-            <ImageButton
-                android:id="@+id/dec_button"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/case_edit_text"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="4dp"
-                android:backgroundTint="#ffffff"
-                android:minHeight="20dp"
-                android:src="@drawable/ic_decrease" />
+                android:inputType="text" />
 
-            <TextView
-                android:id="@+id/days_text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="64dp"
-                android:minHeight="54dp"
-                android:padding="8dp"
-                android:text="@string/_0"
-                android:textAlignment="center"
-                android:textSize="20sp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-            <ImageButton
-                android:id="@+id/inc_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="4dp"
-                android:backgroundTint="#ffffff"
-                android:minHeight="20dp"
-                android:src="@drawable/ic_increase" />
-        </LinearLayout>
 
         <TextView
             android:id="@+id/label_reason"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="Reason"
+            android:text="Reason for defaulting"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/counter_view" />
+            app:layout_constraintTop_toBottomOf="@id/case_text_layout" />
 
         <EditText
             android:id="@+id/reason_edit_text"
@@ -119,7 +87,11 @@
             android:autofillHints="None"
             android:hint="@string/enter_reason"
             android:inputType="text"
-            android:minHeight="150dp"
+            android:background="@drawable/et_rounded"
+            android:padding="4dp"
+            android:gravity="top"
+            android:backgroundTint="#ffd"
+            android:minHeight="200dp"
             android:textColor="?colorAccent"
             app:layout_constraintTop_toBottomOf="@id/label_reason" />
 
